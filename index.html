@@ -21,6 +21,31 @@
       width: 100%;
       height: 100vh;
       border: none;
+      display: none;
+    }
+
+    /* Styling for the channel logos */
+    .channel-logo {
+      display: inline-block;
+      margin: 10px;
+      width: 100px;
+      height: 100px;
+      border-radius: 10px;
+      background-color: #333;
+      text-align: center;
+      line-height: 100px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .channel-logo:hover {
+      transform: scale(1.1);
+    }
+
+    .channel-logo img {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
     }
 
     /* Floating Telegram logo styling */
@@ -53,24 +78,49 @@
       background-color: #007bb5;
     }
 
-    /* Styling the page container */
-    #container {
-      position: relative;
-      height: 100vh;
+    /* Container for channel logos */
+    .channel-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
 
   <div id="container">
-    <!-- Embed the external website inside an iframe -->
-    <iframe src="https://tv.bdixtv24.co/toffee/" frameborder="0"></iframe>
+    <!-- Channel logo buttons -->
+    <div class="channel-container">
+      <div class="channel-logo" onclick="playStream('https://tv.bdixtv24.co/toffee/channel1')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Channel1_Logo.png" alt="Channel 1">
+      </div>
+      <div class="channel-logo" onclick="playStream('https://tv.bdixtv24.co/toffee/channel2')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Channel2_Logo.png" alt="Channel 2">
+      </div>
+      <div class="channel-logo" onclick="playStream('https://tv.bdixtv24.co/toffee/channel3')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Channel3_Logo.png" alt="Channel 3">
+      </div>
+      <!-- Add more channel logos here -->
+    </div>
+
+    <!-- Embedded iframe to play the stream -->
+    <iframe id="playerIframe" src="" frameborder="0"></iframe>
 
     <!-- Floating Telegram logo with link -->
     <a href="https://t.me/IPTV07INDIA" target="_blank" class="telegram-float">
       <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Telegram_2019_logo.svg" alt="Telegram Logo">
     </a>
   </div>
+
+  <script>
+    // Function to play the stream in the iframe
+    function playStream(channelUrl) {
+      var iframe = document.getElementById('playerIframe');
+      iframe.src = channelUrl;
+      iframe.style.display = 'block';  // Show iframe when a channel is selected
+    }
+  </script>
 
 </body>
 </html>
