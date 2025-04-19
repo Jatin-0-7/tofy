@@ -4,21 +4,73 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>IPTV07INDIA</title>
+  <title>Embedded IPTV Stream</title>
   <link rel="shortcut icon" type="image/x-icon" href="https://i.postimg.cc/YC3Npf10/image.webp">
   <style>
+    /* Dark theme for the page */
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
     /* Fullscreen iframe styling */
     iframe {
       width: 100%;
       height: 100vh;
       border: none;
     }
+
+    /* Floating Telegram logo styling */
+    .telegram-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #0088cc;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .telegram-float:hover {
+      transform: scale(1.1);
+    }
+
+    .telegram-float img {
+      width: 30px;
+      height: 30px;
+    }
+
+    /* Optional: Add a hover effect to the link */
+    .telegram-float:hover {
+      background-color: #007bb5;
+    }
+
+    /* Styling the page container */
+    #container {
+      position: relative;
+      height: 100vh;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Embed the external website inside an iframe -->
-  <iframe src="https://tv.bdixtv24.co/toffee/" frameborder="0"></iframe>
+  <div id="container">
+    <!-- Embed the external website inside an iframe -->
+    <iframe src="https://tv.bdixtv24.co/toffee/" frameborder="0"></iframe>
+
+    <!-- Floating Telegram logo with link -->
+    <a href="https://t.me/IPTV07INDIA" target="_blank" class="telegram-float">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Telegram_2019_logo.svg" alt="Telegram Logo">
+    </a>
+  </div>
 
 </body>
 </html>
