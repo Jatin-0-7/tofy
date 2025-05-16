@@ -1,55 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Live TV</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Watch Live | NINJA TV</title>
+  <link rel="icon" href="https://i.imgur.com/Mn3QK3r.png" />
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
       background: black;
+      height: 100%;
+      overflow: hidden;
     }
-    #player {
-      width: 100vw;
+
+    .player-container {
+      position: fixed;
+      top: 0;
+      left: 0;
       height: 100vh;
+      width: 100vw;
+      border: none;
+    }
+
+    .overlay {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      color: #fff;
+      background: rgba(0,0,0,0.6);
+      padding: 4px 10px;
+      font-size: 12px;
+      border-radius: 6px;
+      font-weight: bold;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #0b9c39;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.2; }
+      50% { opacity: 1; }
     }
   </style>
-
-  <!-- JW Player Library -->
-  <script src="https://content.jwplatform.com/libraries/KB5zFt7A.js"></script>
-  <!-- jQuery -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 
-<div id="player"></div>
+  <div class="overlay">LIVE: Disney India</div>
+  <div class="loader" id="loader">Loading Stream...</div>
 
-<script>
-  $(document).ready(function() {
-    // Base64-encoded stream and logo
-    let encoded_url = "bGluZWFyLWxpdmUucGhwP2lkPTg2NCZ2dG9rZW49JmU9Lm0zdTg=";
-    let encoded_logo = "aHR0cHM6Ly90ZWxlbWV0ci5pby9lbi9jaGFubmVscy8xODkyNjEwMDE0LW5pbmphdHYzL3B1Ymxpc2g=";
-
-    // Decode
-    let playback_url = atob(encoded_url);
-    let channel_logo = atob(encoded_logo);
-
-    // Setup JWPlayer
-    jwplayer("player").setup({
-      file: playback_url,
-      image: channel_logo,
-      width: "100%",
-      height: "100%",
-      autostart: true,
-      mute: false,
-      stretching: "exactfit",
-      logo: {
-        file: channel_logo,
-        position: "top-left"
-      }
-    });
-  });
-</script>
+  <iframe
+    src="http://103.168.18.83/web/?watch=864"
+    class="player-container"
+    frameborder="0"
+    allowfullscreen
+    allow="autoplay; encrypted-media"
+    onload="document.getElementById('loader').style.display='none';">
+  </iframe>
 
 </body>
 </html>
